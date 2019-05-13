@@ -1,50 +1,51 @@
-import React, { Component } from 'react'
-import  { 
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Container
-} from 'reactstrap'
+import React, { Component } from "react";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Container
+} from "reactstrap";
+import RegisterModal from "../components/Auth/RegisterModal";
+import Logout from "../components/Auth/Logout";
 
 class AppNavbar extends Component {
-    state = {
-        isOpen: false,
-    }
+  state = {
+    isOpen: false
+  };
 
-    toggle = () => {
-        this.setState( state => {
-           return {
-               isOpen: !state.isOpen
-           } 
-        })
-    }
-    render(){
-        return(
-            <div>
-                <Navbar color="dark" dark expand="sm" className="mb-5">
-                    <Container>
-                        <NavbarBrand href="/">ShoppingList</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} />
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="https://github.com/Lu-c-s">
-                                        Github
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </Container>
-                </Navbar>
-            </div>
-        )
-    }
-
-
+  toggle = () => {
+    this.setState(state => {
+      return {
+        isOpen: !state.isOpen
+      };
+    });
+  };
+  render() {
+    return (
+      <div>
+        <Navbar color="dark" dark expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href="/">ShoppingList</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <RegisterModal />
+                </NavItem>
+                <NavItem>
+                  <Logout />
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
+      </div>
+    );
+  }
 }
 
-export default AppNavbar
+export default AppNavbar;

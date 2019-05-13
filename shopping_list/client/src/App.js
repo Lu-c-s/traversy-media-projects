@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
-import ItemModal from './components/itemModal';
+import ItemModal from './components/ItemModal';
 import { Container } from 'reactstrap'
 import { loadUser } from './redux/actions/authActions'
 import { connect } from 'react-redux'
