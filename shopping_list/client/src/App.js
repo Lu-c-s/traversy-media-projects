@@ -4,8 +4,17 @@ import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/itemModal';
 import { Container } from 'reactstrap'
-function App() {
-  return (
+import { loadUser } from './redux/actions/authActions'
+import { connect } from 'react-redux'
+
+class App extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(loadUser())
+  }
+
+  render(){
+    return (
     <div className="App">
       <AppNavbar />
       <Container>
@@ -14,6 +23,12 @@ function App() {
       </Container>
     </div>
   );
+  }
+  
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
+
+export default connect(null,mapDispatchToProps)(App);
