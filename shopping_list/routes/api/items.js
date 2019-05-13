@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const auth = require('../middleware/auth')
 //Item Model
 const Item = require('../../models/Item')
 
@@ -13,14 +13,14 @@ router.get('/',item.findAll)
 
 //@route POST api/items
 //@des Create a item
-//@access Public
+//@access Private
 
-router.post('/', item.create)
+router.post('/',auth, item.create)
 
 //@route DELETE api/items/:id
 //@des Delete a item
-//@access Public
+//@access Private
 
-router.delete('/:id', item.delete)
+router.delete('/:id',auth, item.delete)
 
 module.exports = router;
